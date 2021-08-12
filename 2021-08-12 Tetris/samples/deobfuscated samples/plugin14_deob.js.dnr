@@ -1,0 +1,144 @@
+(function(_0x46c447, _0x59d644) {
+    var _0x54f87b = function(_0x1a0c48) {
+        while (--_0x1a0c48) {
+            _0x46c447['push'](_0x46c447['shift']());
+        }
+    };
+    _0x54f87b(++_0x59d644);
+}(_0x59d6, 0x18d));
+var _0x54f8 = function(_0x46c447, _0x59d644) {
+    _0x46c447 = _0x46c447 - 0x0;
+    var _0x54f87b = _0x59d6[_0x46c447];
+    return _0x54f87b;
+};
+'use strict';
+
+function _typeof(_0x589fa5) {
+    `@babel/helpers - typeof`;
+    if (typeof Symbol === 'function' && typeof Symbol[`iterator`] === `symbol`) {
+        _typeof = function _0x1d39e7(_0x523521) {
+            return typeof _0x523521;
+        };
+    } else {
+        _typeof = function _0x1e6175(_0x35fd13) {
+            return _0x35fd13 && typeof Symbol === 'function' && _0x35fd13['constructor'] === Symbol && _0x35fd13 !== Symbol[`prototype`] ? `symbol` : typeof _0x35fd13;
+        };
+    }
+    return _typeof(_0x589fa5);
+}
+
+function _classCallCheck(_0x56980e, _0x148e17) {
+    if (!(_0x56980e instanceof _0x148e17)) {
+        throw new TypeError('Cannot\x20call\x20a\x20class\x20as\x20a\x20function');
+    }
+}
+
+function _defineProperties(_0x256215, _0x525b69) {
+    for (var _0x5a406f = 0x0; _0x5a406f < _0x525b69[`length`]; _0x5a406f++) {
+        var _0x1a75ac = _0x525b69[_0x5a406f];
+        _0x1a75ac['enumerable'] = _0x1a75ac[`enumerable`] || ![];
+        _0x1a75ac[`configurable`] = !![];
+        if (`value` in _0x1a75ac) _0x1a75ac[`writable`] = !![];
+        Object[`defineProperty`](_0x256215, _0x1a75ac[`key`], _0x1a75ac);
+    }
+}
+
+function _createClass(_0x51bc46, _0x31f0e6, _0x4e8c96) {
+    if (_0x31f0e6) _defineProperties(_0x51bc46[`prototype`], _0x31f0e6);
+    if (_0x4e8c96) _defineProperties(_0x51bc46, _0x4e8c96);
+    return _0x51bc46;
+}(function() {
+    var _0x36085e = function() {
+        function _0x173ee2(_0xb9ef22, _0x4cb037, _0x45766b) {
+            _classCallCheck(this, _0x173ee2);
+            this[`api`] = _0xb9ef22;
+            this[`args`] = _0x4cb037;
+            this['plugin'] = _0x45766b;
+            this[`numConnected`] = 0x0;
+            this[`opening`] = [];
+            this[`run`]();
+        }
+        _createClass(_0x173ee2, [{
+            'key': `report`,
+            'value': function _0xd9885d(_0x4cfb28) {
+                return this[`api`][`callback`]({
+                    'status': !![],
+                    'msg': '',
+                    'data': _0x4cfb28
+                }, {
+                    'plugin': this[`plugin`],
+                    'save': !![],
+                    'type': _typeof(_0x4cfb28) === 'object' ? 'json' : `string`
+                });
+            }
+        }, {
+            'key': `socketWatcher`,
+            'value': function _0x5afdcd(_0x138e76, _0x1bebc8) {
+                var _0x4c9c6b = this;
+                var _0x41152c = _0x1bebc8 ? '' : `/sockjs-node`;
+                var _0x493891 = `ws://localhost:`[`concat`](_0x138e76)[`concat`](_0x41152c);
+                var _0xbc826 = new WebSocket(_0x493891);
+
+                function _0x3eb706(_0x5a3ce8, _0x234df7) {
+                    var _0x213f69 = _0x234df7 ? '[' ['concat'](_0x234df7, ']')[`concat`](_0x5a3ce8) : _0x5a3ce8;
+                    _0x4c9c6b[`report`]({
+                        'data': _0x213f69
+                    });
+                }
+
+                function _0x19e169(_0x1de696) {
+                    var _0x45bfe3 = _0x1de696[`replace`](/\u001b\[.*?m/g, '');
+                    _0x4c9c6b[`report`]({
+                        'data': `[error]`[`concat`](_0x45bfe3)
+                    });
+                }
+                _0xbc826[`onerror`] = function(_0x1a9f88) {
+                    if (!_0x1bebc8) {
+                        _0x4c9c6b['socketWatcher'](_0x138e76, !![]);
+                    }
+                };
+                _0xbc826[`onopen`] = function(_0x13b678) {
+                    _0x4c9c6b[`numConnected`] += 0x1;
+                    _0x4c9c6b[`opening`]['push'](_0x138e76);
+                    _0x3eb706('Connected\x20to\x20' [`concat`](_0x138e76));
+                };
+                _0xbc826[`addEventListener`](`close`, function() {
+                    if (_0x4c9c6b['opening']['includes'](_0x138e76)) {
+                        _0x3eb706('' ['concat'](_0x138e76, '\x20is\x20closed'));
+                    }
+                });
+                _0xbc826[`onmessage`] = function(_0x195305) {
+                    var _0x18abf1;
+                    try {
+                        _0x18abf1 = JSON[`parse`](_0x195305[`data`]);
+                    } catch (_0x51374b) {}
+                    if (_0x18abf1 && _0x18abf1['type'] == 'errors') {
+                        _0x18abf1[`data`]['forEach'](function(_0x4dc1d3) {
+                            _0x19e169(_0x4dc1d3);
+                        });
+                    } else if (_0x18abf1 && _0x18abf1[`type`]) {
+                        _0x3eb706(_0x195305[`data`], _0x18abf1[`type`]);
+                    } else {
+                        _0x3eb706(_0x195305['data']);
+                    }
+                };
+            }
+        }, {
+            'key': 'run',
+            'value': function _0xce30bc() {
+                this[`socketWatcher`](0xbb8);
+                this['socketWatcher'](0xbb9);
+                this[`socketWatcher`](0x1b58);
+                this[`socketWatcher`](0x1f40);
+                this[`socketWatcher`](0x2680);
+                if (this[`numConnected`] > 0x0) {
+                    this['report']({
+                        'data': `The command is sent successfully, wait for the result to return`
+                    });
+                }
+            }
+        }]);
+        return _0x173ee2;
+    }();
+    return _0x36085e;
+}());
