@@ -35,6 +35,8 @@ def main():
 			dec_str = shift_array[counter]
 		deobf_data = deobf_data.replace("{}('0x{}')".format(str_access_var_name,\
 		 hex(counter)[2:]), repr(dec_str))
+		deobf_data = deobf_data.replace("{}(0x{})".format(str_access_var_name,\
+		 hex(counter)[2:]), repr(dec_str))
 	with open(sys.argv[2], 'w') as deob_script:
 		deob_script.write(deobf_data)
 	print("Finished!")
